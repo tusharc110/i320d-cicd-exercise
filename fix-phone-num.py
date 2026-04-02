@@ -1,10 +1,10 @@
 import pytest
 
 def fix_phone_num(phone_num_to_fix):
-    if len(phone_num_to_fix) != 10:
-        raise ValueError(f"phone number must be length 10; got \"{phone_num_to_fix}\" which is of length {len(phone_num_to_fix)}")
     if not phone_num_to_fix.isdigit():
         raise ValueError(f"phone number must only contain digits; got \"{phone_num_to_fix}\"")
+    if len(phone_num_to_fix) not in (10, 11):
+        raise ValueError(f"phone number must be length 10 or 11; got \"{phone_num_to_fix}\" which is of length {len(phone_num_to_fix)}")
     if len(phone_num_to_fix) == 11:
         # The phone number is of length 11, so check if it has the "1" country code.
         if phone_num_to_fix[0] != "1":
